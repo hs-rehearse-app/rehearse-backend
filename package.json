@@ -17,13 +17,21 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "mikro-orm": "mikro-orm"
   },
   "dependencies": {
+    "@mikro-orm/cli": "^5.7.10",
+    "@mikro-orm/core": "^5.7.10",
+    "@mikro-orm/migrations": "^5.7.10",
+    "@mikro-orm/nestjs": "^5.1.8",
+    "@mikro-orm/postgresql": "^5.7.10",
     "@nestjs/common": "^9.4.2",
     "@nestjs/core": "^9.4.2",
     "@nestjs/platform-express": "^9.4.2",
     "aws-sdk": "^2.1386.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1",
     "uuid": "^9.0.0"
@@ -52,6 +60,13 @@
     "ts-node": "^10.9.1",
     "tsconfig-paths": "4.2.0",
     "typescript": "^5.0.4"
+  },
+  "mikro-orm": {
+    "useTsNode": true,
+    "configPaths": [
+      "./src/mikro-orm.config.ts",
+      "./dist/mikro-orm.config.js"
+    ]
   },
   "jest": {
     "moduleFileExtensions": [
