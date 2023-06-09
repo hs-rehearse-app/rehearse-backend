@@ -1,8 +1,8 @@
 import * as path from 'path';
-import { RehearsalSite } from './rehearsal-sites/database/entity/rehearsal-site.entity';
+import { SiteEntity } from './sites/database/entity/site.entity';
 
 export default {
-  entities: [RehearsalSite],
+  entities: [SiteEntity],
   // entities: [path.join(__dirname, '..', '..', './dist/**/*.entity.js')],
   // entitiesTs: [path.join(__dirname, '..', '..', './src/**/*.entity.ts')],
   dbName: 'rehearse',

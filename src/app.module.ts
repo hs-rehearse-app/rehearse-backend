@@ -3,7 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UploadsModule } from './uploads/uploads.module';
 import { ConfigModule } from '@nestjs/config';
-import { RehearsalSitesModule } from './rehearsal-sites/rehearsal-sites.module';
+import { SitesModule } from './sites/sites.module';
 import { MikroOrmModule } from '@mikro-orm/nestjs';
 
 @Module({
@@ -30,7 +30,7 @@ import { MikroOrmModule } from '@mikro-orm/nestjs';
       },
     }),
     UploadsModule,
-    RehearsalSitesModule,
+    SitesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
