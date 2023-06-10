@@ -1,6 +1,6 @@
 import { ConflictException, Injectable } from '@nestjs/common';
 import { SiteRepository } from '../../database/repository/site.repository';
-import { CreateSiteCommand } from '../commands/create-site.command';
+import { CreateSiteRequest } from '../actions/create-site.request';
 import { Site } from '../models/site.model';
 import { UniqueException } from '../exception/unique-exception';
 
@@ -8,7 +8,7 @@ import { UniqueException } from '../exception/unique-exception';
 export class SiteService {
   constructor(private readonly repo: SiteRepository) {}
 
-  public create(command: CreateSiteCommand): Promise<Site> {
+  public create(command: CreateSiteRequest): Promise<Site> {
     return this.repo.create(command).catch((e) => this.handleCreateError(e));
   }
 

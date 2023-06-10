@@ -1,7 +1,7 @@
 import { Entity, OneToOne, PrimaryKey, Property } from '@mikro-orm/core';
 import { SiteEntity } from './site.entity';
 import { plainToInstance } from 'class-transformer';
-import { SiteLocation } from 'src/sites/domain/models/location.model';
+import { SiteLocation } from '../../domain/models/location.model';
 
 @Entity({ tableName: 'site_location' })
 export class SiteLocationEntity {

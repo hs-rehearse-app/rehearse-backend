@@ -153,6 +153,85 @@
           "updateRule": "cascade"
         }
       }
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "unsigned": true,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "price_per_hour": {
+          "name": "price_per_hour",
+          "type": "numeric(10,0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "precision": 10,
+          "scale": 0,
+          "mappedType": "decimal"
+        },
+        "pictures": {
+          "name": "pictures",
+          "type": "text[]",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "array"
+        },
+        "site_id": {
+          "name": "site_id",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        }
+      },
+      "name": "room",
+      "schema": "public",
+      "indexes": [
+        {
+          "keyName": "room_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {
+        "room_site_id_foreign": {
+          "constraintName": "room_site_id_foreign",
+          "columnNames": [
+            "site_id"
+          ],
+          "localTableName": "public.room",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.rehearsal_site",
+          "updateRule": "cascade"
+        }
+      }
     }
   ]
 }

@@ -1,5 +1,6 @@
 import { Exclude } from 'class-transformer';
 import { SiteLocation } from './location.model';
+import { Room } from './room.model';
 
 export class Site {
   @Exclude()
@@ -14,4 +15,6 @@ export class Site {
   pictures: string[];
 
   location: SiteLocation;
+
+  rooms?: Room[];
 }

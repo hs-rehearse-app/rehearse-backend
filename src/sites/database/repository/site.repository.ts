@@ -1,11 +1,12 @@
 import { MikroORM, UniqueConstraintViolationException } from '@mikro-orm/core';
 import { Injectable } from '@nestjs/common';
 import { SiteEntity } from '../entity/site.entity';
-import { CreateSiteCommand } from '../../domain/commands/create-site.command';
+import { CreateSiteRequest } from '../../domain/actions/create-site.request';
 import { SiteLocationEntity } from '../entity/site-location.entity';
 import { createInstance } from 'src/utils/create-instance';
 import { UniqueException } from 'src/sites/domain/exception/unique-exception';
 import { Site } from 'src/sites/domain/models/site.model';
+import { RoomEntity } from '../entity/room.entity';
 
 @Injectable()
 export class SiteRepository {
@@ -15,10 +16,14 @@ export class SiteRepository {
     return this.orm.em.fork();
   }
 
-  public async create(command: CreateSiteCommand): Promise<Site> {
-    const location = createInstance(SiteLocationEntity, command.location);
+  public async create(request: CreateSiteRequest): Promise<Site> {
+    const location = createInstance(SiteLocationEntity, request.locationData);
 
-    const site = createInstance(SiteEntity, { ...command, location });
+    const site = createInstance(SiteEntity, { ...request.siteData, location });
+
+    request.roomsData.forEach((roomData) =>
+      site.rooms.add(createInstance(RoomEntity, roomData)),
+    );
 
     await this.em
       .persistAndFlush(site)
