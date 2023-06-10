@@ -15,8 +15,26 @@
           "nullable": false,
           "mappedType": "integer"
         },
-        "name": {
-          "name": "name",
+        "city": {
+          "name": "city",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "address": {
+          "name": "address",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "time_zone": {
+          "name": "time_zone",
           "type": "varchar(255)",
           "unsigned": false,
           "autoincrement": false,
@@ -25,9 +43,91 @@
           "mappedType": "string"
         }
       },
+      "name": "site_location",
+      "schema": "public",
+      "indexes": [
+        {
+          "keyName": "site_location_pkey",
+          "columnNames": [
+            "id"
+          ],
+          "composite": false,
+          "primary": true,
+          "unique": true
+        }
+      ],
+      "checks": [],
+      "foreignKeys": {}
+    },
+    {
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "unsigned": true,
+          "autoincrement": true,
+          "primary": true,
+          "nullable": false,
+          "mappedType": "integer"
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "string"
+        },
+        "logo": {
+          "name": "logo",
+          "type": "text",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "text"
+        },
+        "pictures": {
+          "name": "pictures",
+          "type": "text[]",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "array"
+        },
+        "location_id": {
+          "name": "location_id",
+          "type": "int",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "integer"
+        }
+      },
       "name": "rehearsal_site",
       "schema": "public",
       "indexes": [
+        {
+          "columnNames": [
+            "name"
+          ],
+          "composite": false,
+          "keyName": "rehearsal_site_name_unique",
+          "primary": false,
+          "unique": true
+        },
+        {
+          "columnNames": [
+            "location_id"
+          ],
+          "composite": false,
+          "keyName": "rehearsal_site_location_id_unique",
+          "primary": false,
+          "unique": true
+        },
         {
           "keyName": "rehearsal_site_pkey",
           "columnNames": [
@@ -39,7 +139,20 @@
         }
       ],
       "checks": [],
-      "foreignKeys": {}
+      "foreignKeys": {
+        "rehearsal_site_location_id_foreign": {
+          "constraintName": "rehearsal_site_location_id_foreign",
+          "columnNames": [
+            "location_id"
+          ],
+          "localTableName": "public.rehearsal_site",
+          "referencedColumnNames": [
+            "id"
+          ],
+          "referencedTableName": "public.site_location",
+          "updateRule": "cascade"
+        }
+      }
     }
   ]
 }
