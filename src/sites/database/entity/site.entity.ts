@@ -25,6 +25,9 @@ export class SiteEntity {
   @Property({ type: 'array' })
   pictures: string[];
 
+  @Property({ type: 'array' })
+  rules: string[];
+
   @OneToOne(() => SiteLocationEntity, (location) => location.site, {
     owner: true,
   })
@@ -38,6 +41,7 @@ export class SiteEntity {
       id: entity.id,
       name: entity.name,
       pictures: entity.pictures,
+      rules: entity.rules,
       location: SiteLocationEntity.toModel(entity.location),
       logo: entity.logo ?? undefined,
       rooms: entity.rooms.getItems().map(RoomEntity.toModel),

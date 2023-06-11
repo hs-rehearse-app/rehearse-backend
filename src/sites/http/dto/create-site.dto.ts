@@ -24,6 +24,9 @@ export class CreateSiteDto {
   @IsString({ each: true })
   pictures: string[];
 
+  @IsString({ each: true })
+  rules: string[];
+
   @ValidateNested({ each: true })
   rooms: CreateRoomDto[];
 }

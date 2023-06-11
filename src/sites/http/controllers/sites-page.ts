@@ -17,6 +17,10 @@ export const renderSitesPage = (sites: Site[]): string => {
       <p style="font-size: 1.2em;"><strong>Location:</strong> ${
         site.location.city
       }, ${site.location.address} (${site.location.timeZone})</p>
+      <p style="font-size: 1.2em;"><strong>Rules:</strong></p>
+      <ul>
+        ${site.rules.map((rule) => `<li>${rule}</li>`).join('')}
+      </ul>
       <p style="font-size: 1.2em;"><strong>Pictures:</strong></p>
       <div style="display: flex; flex-wrap: wrap; gap: 10px;">
         ${site.pictures

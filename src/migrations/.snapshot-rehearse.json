@@ -97,6 +97,15 @@
           "nullable": false,
           "mappedType": "array"
         },
+        "rules": {
+          "name": "rules",
+          "type": "text[]",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "mappedType": "array"
+        },
         "location_id": {
           "name": "location_id",
           "type": "int",

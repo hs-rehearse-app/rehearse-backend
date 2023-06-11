@@ -14,6 +14,8 @@ export class Site {
 
   pictures: string[];
 
+  rules: string[];
+
   location: SiteLocation;
 
   rooms?: Room[];
